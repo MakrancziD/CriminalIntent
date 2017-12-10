@@ -17,6 +17,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
@@ -30,12 +32,15 @@ public class CrimeFragment extends Fragment {
 
     private static final String ARG_CRIME_ID = "crime_id";
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_TIME = "DialogTime";
 
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_TIME = 1;
 
     private Crime mCrime;
     private EditText mTitleField;
     private Button mDateButton;
+    private Button mTimeButton;
     private CheckBox mSolvedCheckbox;
 
     public static CrimeFragment newInstance(UUID crimeId) {
@@ -90,6 +95,18 @@ public class CrimeFragment extends Fragment {
             }
         });
 
+        mTimeButton = (Button) v.findViewById(R.id.crime_time);
+        updateTime();
+        mTimeButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager manager = getFragmentManager();
+                TimePickerFragment dialog = TimePickerFragment.newInstance(mCrime.getDate().getTime());
+                dialog.setTargetFragment(CrimeFragment.this, REQUEST_TIME);
+                dialog.show(manager, DIALOG_TIME);
+            }
+        });
+
         mSolvedCheckbox = (CheckBox) v.findViewById(R.id.crime_solved);
         mSolvedCheckbox.setChecked(mCrime.isSolved());
         mSolvedCheckbox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -113,9 +130,24 @@ public class CrimeFragment extends Fragment {
             mCrime.setDate(date);
             updateDate();
         }
+
+        if(requestCode==REQUEST_TIME) {
+            long time = data.getLongExtra(TimePickerFragment.EXTRA_TIME, 0);
+            Date date = mCrime.getDate();
+            date.setTime(time);
+            mCrime.setDate(date);
+            updateTime();
+        }
     }
 
     private void updateDate() {
         mDateButton.setText(mCrime.getDate().toString());
+    }
+
+    private void updateTime() {
+        Date date = mCrime.getDate();
+        DateFormat dateFormat = DateFormat.getTimeInstance();
+        String time = dateFormat.format(date);
+        mTimeButton.setText(time);
     }
 }
