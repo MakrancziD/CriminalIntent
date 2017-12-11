@@ -14,6 +14,8 @@
     <string name="hide_subtitle">Hide Subtitle</string>
     <string name="subtitle_format">%1$d crimes</string>
     <string name="delete">Delete</string>
+    <string name="no_crimes">There are no crimes to show.</string>
+    <string name="create_crime">Create Crime</string>
     <plurals name="subtitle_plural">
         <item quantity="one">%1$d crime</item>
         <item quantity="other">%1$d crimes</item>
