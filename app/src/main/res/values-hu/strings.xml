@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">CriminalIntent</string>
+    <string name="crime_title_hint">Írd be a bűntény címét!</string>
+    <string name="crime_title_label">Cím</string>
+    <string name="crime_details_label">Részletek</string>
+    <string name="crime_solved_label">Megoldva</string>
+    <string name="crime_title">Bűntény Cím</string>
+    <string name="crime_date">Bűntény időpont</string>
+    <string name="first">Első</string>
+    <string name="last">Utolsó</string>
+    <string name="date_picker_title">Bűntény dátuma:</string>
+    <string name="new_crime">Új bűntény</string>
+    <string name="show_subtitle">Felirat megjelenítése</string>
+    <string name="hide_subtitle">Felirat elrejtése</string>
+    <string name="subtitle_format">%1$d bűntény</string>
+    <string name="crime_suspect_text">Gyanúsított választása</string>
+    <string name="crime_report_text">Bűntény jelentése</string>
+    <string name="crime_report">%1$s!
+      The crime was discovered on %2$s. %3$s, and %4$s
+    </string>
+    <string name="crime_report_solved">Ügy megoldva!</string>
+    <string name="crime_report_unsolved">Ügy függőben!</string>
+    <string name="crime_report_no_suspect">Nincs gyanúsított.</string>
+    <string name="crime_report_suspect">A gyanusított %s.</string>
+    <string name="crime_report_subject">CriminalIntent Bűntény jelentés</string>
+    <string name="send_report">Bűntény jelentés küldése:</string>
+</resources>
