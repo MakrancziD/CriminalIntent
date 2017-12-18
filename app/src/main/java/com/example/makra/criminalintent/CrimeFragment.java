@@ -255,7 +255,8 @@ public class CrimeFragment extends Fragment {
     }
 
     private void updateDate() {
-        mDateButton.setText(mCrime.getDate().toString());
+        java.text.DateFormat df = DateFormat.getDateFormat(getActivity());
+        mDateButton.setText(df.format(mCrime.getDate()));
     }
 
     private String getCrimeReport() {
